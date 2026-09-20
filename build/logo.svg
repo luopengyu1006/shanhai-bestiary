@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  山海簿 · 异兽图腾 Logo
+  - 龙首侧脸 + 后颈鳍 + 朱砂眼 + 金紫双角
+  - 墨黑底 + 矿紫外环（带缺口） + 篆刻印章"山海"
+  - 配色：#06040A / #B58CFF / #F4C277 / #F26B6B / #A8263D
+  - 设计原则：前卫 / 山海报本矿物色 / 在 16×16 仍可辨识主轮廓
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#1B1424"/>
+      <stop offset="60%" stop-color="#0E0A14"/>
+      <stop offset="100%" stop-color="#06040A"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F4C277"/>
+      <stop offset="55%" stop-color="#E8A857"/>
+      <stop offset="100%" stop-color="#A45F26"/>
+    </linearGradient>
+    <linearGradient id="goldDark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#A45F26"/>
+      <stop offset="100%" stop-color="#5A3318"/>
+    </linearGradient>
+    <linearGradient id="violet" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#B58CFF"/>
+      <stop offset="100%" stop-color="#6A48C9"/>
+    </linearGradient>
+    <radialGradient id="eye" cx="40%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#F8C5C5"/>
+      <stop offset="40%" stop-color="#F26B6B"/>
+      <stop offset="100%" stop-color="#A8263D"/>
+    </radialGradient>
+  </defs>
+
+  <!-- 圆角方形底 -->
+  <rect x="0" y="0" width="512" height="512" rx="96" ry="96" fill="url(#bg)"/>
+
+  <!-- 矿紫断环（缺口在右上） -->
+  <circle cx="256" cy="256" r="220" fill="none" stroke="url(#violet)" stroke-width="6" opacity="0.55"
+          stroke-dasharray="1130 80" stroke-dashoffset="-200"/>
+  <circle cx="426" cy="146" r="5" fill="#F26B6B"/>
+  <circle cx="80"  cy="360" r="4" fill="#F4C277"/>
+
+  <!-- 异兽主体（龙首侧脸） -->
+  <g transform="translate(0,18)">
+    <!-- 后颈鳍（尖锐几何） -->
+    <path d="M 270 175 L 255 130 L 280 160 L 290 110 L 300 165 L 320 120 L 325 175 Z"
+          fill="url(#gold)" stroke="#5A3318" stroke-width="2"/>
+    <!-- 头部主轮廓 -->
+    <path d="M 130 320
+             C 130 220, 200 175, 280 175
+             C 350 175, 405 215, 415 265
+             C 420 295, 410 320, 380 330
+             L 360 340
+             C 350 350, 345 360, 350 370
+             C 360 380, 375 378, 388 370
+             L 410 358
+             C 420 355, 425 360, 422 368
+             L 410 388
+             C 395 405, 370 410, 350 400
+             L 320 380
+             C 310 375, 300 375, 290 380
+             L 260 400
+             C 245 408, 230 408, 215 400
+             L 175 380
+             C 150 365, 130 350, 125 330 Z"
+          fill="url(#gold)" stroke="#5A3318" stroke-width="3"/>
+    <!-- 颧骨暗面（分割前脸/上额） -->
+    <path d="M 145 305
+             C 180 260, 240 230, 300 235
+             C 340 240, 370 255, 388 280
+             C 360 300, 320 308, 280 305
+             C 240 302, 200 308, 170 318 Z"
+          fill="url(#goldDark)"/>
+    <!-- 鼻梁棱线 -->
+    <path d="M 230 250 C 260 230, 320 225, 360 245"
+          stroke="#7A4422" stroke-width="3" fill="none"/>
+
+    <!-- 左角（金色） -->
+    <path d="M 220 175 C 200 110, 165 80, 130 95 C 100 110, 95 145, 130 165 C 155 175, 180 175, 200 180"
+          stroke="url(#gold)" stroke-width="14" fill="none" stroke-linecap="round"/>
+    <path d="M 140 105 L 120 75" stroke="url(#gold)" stroke-width="8" stroke-linecap="round"/>
+    <path d="M 145 130 L 115 125" stroke="url(#gold)" stroke-width="8" stroke-linecap="round"/>
+
+    <!-- 右角（矿紫） -->
+    <path d="M 320 178 C 350 115, 400 90, 425 115 C 450 138, 445 175, 410 195 C 390 205, 370 200, 355 195"
+          stroke="url(#violet)" stroke-width="14" fill="none" stroke-linecap="round"/>
+    <path d="M 410 115 L 440 88" stroke="url(#violet)" stroke-width="8" stroke-linecap="round"/>
+    <path d="M 415 160 L 448 162" stroke="url(#violet)" stroke-width="8" stroke-linecap="round"/>
+
+    <!-- 眼（朱砂） -->
+    <circle cx="345" cy="270" r="20" fill="url(#gold)" opacity="0.9"/>
+    <circle cx="345" cy="270" r="14" fill="url(#eye)"/>
+    <circle cx="340" cy="265" r="3.5" fill="#FFE9CC"/>
+
+    <!-- 鼻端朱砂点 -->
+    <circle cx="412" cy="290" r="4" fill="#A8263D"/>
+
+    <!-- 颈后卷云须（紫 + 金） -->
+    <path d="M 380 360 C 430 360, 460 335, 470 295"
+          stroke="url(#violet)" stroke-width="9" fill="none" stroke-linecap="round" opacity="0.95"/>
+    <path d="M 370 388 C 425 392, 460 378, 482 350"
+          stroke="url(#gold)" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.85"/>
+  </g>
+
+  <!-- 篆刻印章"山海" -->
+  <g transform="translate(346,346)">
+    <rect x="0" y="0" width="92" height="92" rx="14" fill="#A8263D" opacity="0.92"/>
+    <rect x="9" y="9" width="74" height="74" rx="10" fill="none" stroke="#F4C277" stroke-width="2" opacity="0.8"/>
+    <text x="46" y="40" text-anchor="middle" font-family="'Noto Serif SC','STSong',serif"
+          font-weight="700" font-size="32" fill="#FBE6B5">山</text>
+    <text x="46" y="78" text-anchor="middle" font-family="'Noto Serif SC','STSong',serif"
+          font-weight="700" font-size="32" fill="#FBE6B5">海</text>
+  </g>
+</svg>

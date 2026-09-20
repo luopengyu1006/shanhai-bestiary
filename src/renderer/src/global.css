@@ -1,0 +1,314 @@
+/* === 山海簿 · Design Tokens ============================================
+   三套主题（只切换颜色，不动布局/字体/圆角）：
+     · 暗夜（默认）  — 深墨底，琥珀+紫点缀；强化了边界与字色对比
+     · 素纸          — 米白纸面，赭石+墨青点缀；白天阅读
+     · 石青          — 深蓝灰底，冰蓝+琥珀点缀；冷调夜间
+   切换方式：<html data-theme="anye | suzhi | shiqing">
+   ===================================================================== */
+
+:root,
+:root[data-theme="anye"] {
+  /* surface —— 暗夜 */
+  --bg-0: #0B0B0F;
+  --bg-1: #13131B;
+  --bg-2: #1B1B26;
+  --bg-3: #242433;
+  --bg-4: #2D2D3F;
+  /* 分隔线明显加粗，让边界看得见 */
+  --line:  rgba(255,255,255,0.10);
+  --line-2:rgba(255,255,255,0.18);
+
+  /* text —— 字色与背景拉开 */
+  --ink-0:#F5F2EC;
+  --ink-1:#D6D1C5;
+  --ink-2:#A8A294;
+  --ink-3:#7A7669;
+
+  /* brand */
+  --amber:   #E8A857;
+  --amber-2: #C6883F;
+  --violet:  #9B7FE6;
+  --violet-2:#7559D1;
+  --rose:    #E6788E;
+  --teal:    #5BB9B0;
+
+  /* 装饰叠加（在 body/App 背景里使用的色调） */
+  --halo-1: rgba(155,127,230,0.10);
+  --halo-2: rgba(232,168,87,0.08);
+  --scrim:  rgba(0,0,0,0.6);
+
+  --shadow-1: 0 1px 0 rgba(255,255,255,0.04) inset, 0 8px 24px rgba(0,0,0,0.45);
+  --shadow-2: 0 12px 40px rgba(0,0,0,0.6);
+  --glow-amber: 0 0 28px rgba(232,168,87,0.28);
+  --glow-violet:0 0 28px rgba(155,127,230,0.24);
+
+  /* 按钮上的“白色玻璃”叠层（暗主题用高亮、亮主题用阴影） */
+  --glass: rgba(255,255,255,0.05);
+  --glass-strong: rgba(255,255,255,0.09);
+
+  /* 面板表面：顶栏/输入框/弹层/速记窗的渐变底色 */
+  --panel-1: linear-gradient(180deg, #14141D 0%, #111118 100%);
+  --panel-2: linear-gradient(180deg, #16161E 0%, #111118 100%);
+  --topbar:  linear-gradient(180deg, #14141D 0%, #111118 100%);
+
+  /* 主按钮（保存 / 新建 / 重启 等）—— 暗夜：琥珀+深棕字 */
+  --primary-bg: linear-gradient(180deg, var(--amber) 0%, var(--amber-2) 100%);
+  --primary-fg: #1A1206;
+  --primary-border: rgba(255,255,255,0.18);
+  --primary-inset: inset 0 1px 0 rgba(255,255,255,0.40);
+  --primary-shadow: var(--glow-amber);
+}
+
+:root[data-theme="suzhi"] {
+  /* surface —— 素纸 */
+  --bg-0: #F5EFE2;
+  --bg-1: #EFE7D4;
+  --bg-2: #E7DCC4;
+  --bg-3: #DDD0B3;
+  --bg-4: #D2C49F;
+  --line:  rgba(60,40,15,0.14);
+  --line-2:rgba(60,40,15,0.22);
+
+  /* text */
+  --ink-0:#2A2418;
+  --ink-1:#3F3624;
+  --ink-2:#6B5F44;
+  --ink-3:#8E8164;
+
+  /* brand —— 同样的色相，微微压低饱和以贴合纸面 */
+  --amber:   #B97A2C;
+  --amber-2: #8E5A1E;
+  --violet:  #6F55B8;
+  --violet-2:#4F3A95;
+  --rose:    #B8526A;
+  --teal:    #3E8A82;
+
+  --halo-1: rgba(111,85,184,0.08);
+  --halo-2: rgba(185,122,44,0.10);
+  --scrim:  rgba(40,28,10,0.35);
+
+  --shadow-1: 0 1px 0 rgba(255,255,255,0.55) inset, 0 6px 18px rgba(60,40,15,0.10);
+  --shadow-2: 0 14px 36px rgba(60,40,15,0.18);
+  --glow-amber: 0 0 22px rgba(185,122,44,0.20);
+  --glow-violet:0 0 22px rgba(111,85,184,0.18);
+
+  --glass: rgba(255,255,255,0.45);
+  --glass-strong: rgba(255,255,255,0.65);
+
+  /* 面板表面 —— 素纸用浅米色 */
+  --panel-1: linear-gradient(180deg, #FBF5E6 0%, #F1E9D2 100%);
+  --panel-2: linear-gradient(180deg, #F8F1DF 0%, #EFE5CB 100%);
+  --topbar:  linear-gradient(180deg, #F5EFE2 0%, #F1E9D2 100%);
+
+  /* 主按钮 —— 素纸：朱砂印章（深朱红底 + 米白字 + 印泥压感） */
+  --primary-bg: linear-gradient(180deg, #C2463F 0%, #9C2E2A 100%);
+  --primary-fg: #FBF5E6;
+  --primary-border: rgba(86,18,16,0.55);
+  --primary-inset: inset 0 1px 0 rgba(255,235,220,0.35);
+  --primary-shadow: 0 4px 14px rgba(156,46,42,0.32), 0 1px 0 rgba(120,28,20,0.30);
+}
+
+:root[data-theme="shiqing"] {
+  /* surface —— 石青 */
+  --bg-0: #0E1620;
+  --bg-1: #131E2C;
+  --bg-2: #1A2738;
+  --bg-3: #223246;
+  --bg-4: #2B3D55;
+  --line:  rgba(180,210,235,0.10);
+  --line-2:rgba(180,210,235,0.18);
+
+  /* text */
+  --ink-0:#EEF4FA;
+  --ink-1:#CBD8E5;
+  --ink-2:#94A6B8;
+  --ink-3:#6B7E92;
+
+  /* brand —— 冰蓝主，琥珀副 */
+  --amber:   #E8A857;
+  --amber-2: #C6883F;
+  --violet:  #7FB8E5;
+  --violet-2:#4F8FC4;
+  --rose:    #E6788E;
+  --teal:    #5BB9B0;
+
+  --halo-1: rgba(127,184,229,0.10);
+  --halo-2: rgba(232,168,87,0.08);
+  --scrim:  rgba(0,0,0,0.6);
+
+  --shadow-1: 0 1px 0 rgba(255,255,255,0.04) inset, 0 8px 24px rgba(0,0,0,0.5);
+  --shadow-2: 0 12px 40px rgba(0,0,0,0.6);
+  --glow-amber: 0 0 28px rgba(232,168,87,0.28);
+  --glow-violet:0 0 28px rgba(127,184,229,0.24);
+
+  --glass: rgba(180,210,235,0.05);
+  --glass-strong: rgba(180,210,235,0.10);
+
+  /* 面板表面 —— 石青用深一档的蓝灰 */
+  --panel-1: linear-gradient(180deg, #16222F 0%, #131E2A 100%);
+  --panel-2: linear-gradient(180deg, #182636 0%, #131F2C 100%);
+  --topbar:  linear-gradient(180deg, #16222F 0%, #131E2A 100%);
+
+  /* 主按钮 —— 石青沿用琥珀主色，与冰蓝品牌色对比 */
+  --primary-bg: linear-gradient(180deg, var(--amber) 0%, var(--amber-2) 100%);
+  --primary-fg: #1A1206;
+  --primary-border: rgba(255,255,255,0.18);
+  --primary-inset: inset 0 1px 0 rgba(255,255,255,0.40);
+  --primary-shadow: var(--glow-amber);
+}
+
+/* 通用：与主题无关的形状 / 字体 */
+:root {
+  --r-1: 6px;
+  --r-2: 10px;
+  --r-3: 14px;
+  --r-4: 20px;
+
+  --font-display: 'Fraunces', 'Noto Serif SC', Georgia, serif;
+  --font-sans: 'Geist', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+  --font-mono: 'Geist Mono', 'JetBrains Mono', 'Cascadia Code', Consolas, monospace;
+
+  color-scheme: dark;
+}
+:root[data-theme="suzhi"] { color-scheme: light; }
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+
+body {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ink-1);
+  background:
+    radial-gradient(1200px 800px at 80% -10%, var(--halo-1), transparent 60%),
+    radial-gradient(1000px 600px at -10% 110%, var(--halo-2), transparent 60%),
+    var(--bg-0);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'ss01', 'cv11', 'tnum';
+  cursor: default;
+  transition: background-color .25s ease, color .25s ease;
+}
+
+/* 默认禁止文本选择，仅对明确允许复制的区域开启 */
+.no-select,
+body:not(.allow-text-select) {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* scrollbars —— 跟主题走 */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--glass);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--glass-strong); background-clip: padding-box; }
+
+/* selection —— 用琥珀主题色 */
+::selection { background: rgba(232,168,87,0.35); color: #fff; }
+:root[data-theme="suzhi"] ::selection { background: rgba(185,122,44,0.30); color: #2A2418; }
+
+/* focus */
+:focus-visible { outline: none; }
+
+/* utility */
+.row { display: flex; align-items: center; }
+.col { display: flex; flex-direction: column; }
+.gap-1 { gap: 4px; } .gap-2 { gap: 8px; } .gap-3 { gap: 12px; } .gap-4 { gap: 16px; }
+.muted { color: var(--ink-2); }
+.dim   { color: var(--ink-3); }
+.mono  { font-family: var(--font-mono); }
+.serif { font-family: var(--font-display); }
+
+/* ----- buttons ----- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  height: 32px; padding: 0 14px;
+  border-radius: var(--r-2);
+  font: 500 13px/1 var(--font-sans);
+  color: var(--ink-0);
+  background: var(--bg-2);
+  border: 1px solid var(--line-2);
+  transition: background .15s ease, border-color .15s ease, transform .15s ease;
+  cursor: pointer;
+}
+.btn:hover { background: var(--bg-3); border-color: var(--line-2); }
+.btn:active { transform: translateY(1px); }
+.btn.ghost { background: transparent; }
+.btn.ghost:hover { background: var(--bg-2); }
+.btn.primary {
+  background: var(--primary-bg);
+  color: var(--primary-fg);
+  border: 1px solid var(--primary-border);
+  box-shadow: var(--primary-shadow), var(--primary-inset);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.btn.primary:hover { filter: brightness(1.05); }
+.btn.primary:active { filter: brightness(0.96); transform: translateY(1px); }
+
+/* ----- inputs ----- */
+.input, .textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: var(--ink-0);
+  font: inherit;
+  outline: none;
+  caret-color: var(--amber);
+}
+.textarea { resize: none; }
+
+/* ----- chips ----- */
+.chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  height: 24px; padding: 0 10px;
+  font: 500 12px/1 var(--font-sans);
+  letter-spacing: 0.01em;
+  border-radius: 999px;
+  border: 1px solid var(--line-2);
+  background: var(--bg-2);
+  color: var(--ink-1);
+  white-space: nowrap;
+  transition: background .15s ease, border-color .15s ease;
+  cursor: pointer;
+}
+.chip:hover { background: var(--bg-3); }
+.chip .dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.4), 0 0 8px currentColor;
+}
+.chip.active {
+  background: var(--glass);
+  border-color: var(--line-2);
+  color: var(--ink-0);
+}
+
+/* ----- divider ----- */
+.hr { height: 1px; background: var(--line); border: none; margin: 0; }
+
+/* ----- animations ----- */
+@keyframes breathe {
+  0%,100% { box-shadow: 0 0 0 0 rgba(232,168,87,0.0); }
+  50%     { box-shadow: 0 0 0 6px rgba(232,168,87,0.10); }
+}
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in {
+  from { opacity: 0; } to { opacity: 1; }
+}
+@keyframes slide-in {
+  from { opacity: 0; transform: translateX(8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.rise  { animation: rise-in  .35s cubic-bezier(.2,.7,.2,1) both; }
+.fade  { animation: fade-in  .25s ease both; }
+.slide { animation: slide-in .30s cubic-bezier(.2,.7,.2,1) both; }
