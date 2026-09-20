@@ -6,13 +6,13 @@
   "main": "out/main/index.js",
   "author": "山海簿",
   "license": "MIT",
-  "homepage": "https://github.com/yourname/shanhai-bestiary#readme",
+  "homepage": "https://github.com/luopengyu1006/shanhai-bestiary#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourname/shanhai-bestiary.git"
+    "url": "https://github.com/luopengyu1006/shanhai-bestiary.git"
   },
   "bugs": {
-    "url": "https://github.com/yourname/shanhai-bestiary/issues"
+    "url": "https://github.com/luopengyu1006/shanhai-bestiary/issues"
   },
   "keywords": [
     "electron",
