@@ -63,7 +63,7 @@ export async function initDb(): Promise<Database> {
           for (const ext of ['-wal', '-shm']) {
             if (fs.existsSync(legacyDb + ext)) fs.renameSync(legacyDb + ext, legacyDb + ext + '.legacy')
           }
-          console.log('[山海簿] 已从旧版 workbuddy.db 迁移数据')
+          console.info('[山海簿] 已从旧版 db 迁移数据')
         }
       } catch (e) {
         // 校验失败，回滚

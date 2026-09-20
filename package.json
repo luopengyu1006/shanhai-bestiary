@@ -5,6 +5,24 @@
   "description": "山海簿 —— 每件事是一只异兽，文档是图鉴，记录是游历。",
   "main": "out/main/index.js",
   "author": "山海簿",
+  "license": "MIT",
+  "homepage": "https://github.com/yourname/shanhai-bestiary#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourname/shanhai-bestiary.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourname/shanhai-bestiary/issues"
+  },
+  "keywords": [
+    "electron",
+    "task-manager",
+    "sqlite",
+    "local-first",
+    "markdown",
+    "productivity",
+    "shanhai"
+  ],
   "scripts": {
     "dev": "electron-vite dev",
     "build": "electron-vite build",
