@@ -1,6 +1,7 @@
 import { useStore, loadTasks } from '../store'
 import type { Status, TaskWithStatus } from '../../../shared/types'
 import { TaskItem } from './TaskItem'
+import { hexToRgba } from '../utils'
 import { useEffect, useMemo, useState } from 'react'
 
 export function TaskList() {
@@ -41,12 +42,20 @@ export function TaskList() {
   }
 
   return (
-    <div className="col" style={{ gap: 18 }}>
-      {groups.map((g) => {
+    <div className="col" style={{ gap: 22 }}>
+      {groups.map((g, gIdx) => {
         const isFilterActive = filterStatusIds.has(g.status.id)
         const collapsed = hasFilter && !expanded.has(g.status.id) && !isFilterActive
         return (
-        <section key={g.status.id} className="col" style={{ gap: 4 }}>
+        <section
+          key={g.status.id}
+          className="col"
+          style={{
+            gap: 8,
+            padding: gIdx > 0 ? '14px 0 0' : '0',
+            borderTop: gIdx > 0 ? '1px dashed var(--line-2)' : 'none'
+          }}
+        >
           <header
             onClick={() => {
               if (collapsed) {
@@ -68,12 +77,16 @@ export function TaskList() {
               display: 'flex',
               gap: 8,
               alignItems: 'center',
-              padding: '2px 4px 8px',
+              padding: '4px 8px',
+              borderRadius: 8,
               fontSize: 10,
               letterSpacing: '0.18em',
-              color: 'var(--ink-3)',
+              color: isFilterActive ? g.status.color : 'var(--ink-3)',
               textTransform: 'uppercase',
-              userSelect: 'none'
+              userSelect: 'none',
+              background: isFilterActive ? hexToRgba(g.status.color, 0.08) : 'transparent',
+              border: isFilterActive ? `1px solid ${hexToRgba(g.status.color, 0.35)}` : '1px solid transparent',
+              transition: 'background .15s, border-color .15s, color .15s'
             }}
           >
             {hasFilter && (
@@ -106,7 +119,7 @@ export function TaskList() {
             <span className="mono">{g.tasks.length}</span>
           </header>
           {!collapsed && (
-            <div className="col" style={{ gap: 2 }}>
+            <div className="col" style={{ gap: 8 }}>
               {g.tasks.map((t) => (
                 <TaskItem
                   key={t.id}

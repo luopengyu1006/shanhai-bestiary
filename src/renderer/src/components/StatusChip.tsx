@@ -71,16 +71,18 @@ export function StatusPicker({ statuses, current, onPick, onClose, align = 'left
         position: 'absolute',
         top: 'calc(100% + 6px)',
         [align]: 0,
-        zIndex: 50,
-        background: 'var(--panel-1)',
+        zIndex: 9999,
+        // 实色底：--bg-2 是各主题的纯色面板色，保证下拉层不透出下方卡片
+        background: 'var(--bg-2)',
         border: '1px solid var(--line-2)',
         borderRadius: 14,
         padding: 6,
-        boxShadow: 'var(--shadow-2)',
-        minWidth: 180
+        boxShadow:
+          '0 0 0 1px rgba(0,0,0,0.5), 0 18px 48px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.06)',
+        minWidth: 200
       }}
     >
-      <div style={{ padding: '6px 10px 8px', fontSize: 10, letterSpacing: '0.16em', color: 'var(--ink-3)', textTransform: 'uppercase' }}>
+      <div style={{ padding: '8px 10px 8px', fontSize: 10, letterSpacing: '0.16em', color: 'var(--ink-3)', textTransform: 'uppercase' }}>
         切换状态 · 1-9
       </div>
       {sorted.map((s, i) => (
@@ -90,18 +92,27 @@ export function StatusPicker({ statuses, current, onPick, onClose, align = 'left
             onPick(s)
             onClose()
           }}
+          onMouseEnter={(e) => {
+            const el = e.currentTarget as HTMLElement
+            el.style.background = hexToRgba(s.color, 0.16)
+          }}
+          onMouseLeave={(e) => {
+            const el = e.currentTarget as HTMLElement
+            el.style.background = s.id === current.id ? hexToRgba(s.color, 0.18) : 'transparent'
+          }}
           className="row"
           style={{
             gap: 10,
             padding: '8px 10px',
-            background: s.id === current.id ? hexToRgba(s.color, 0.14) : 'transparent',
+            background: s.id === current.id ? hexToRgba(s.color, 0.18) : 'transparent',
             border: 'none',
             borderRadius: 8,
             color: 'var(--ink-0)',
             cursor: 'pointer',
             width: '100%',
             textAlign: 'left',
-            font: '500 13px var(--font-sans)'
+            font: '500 13px var(--font-sans)',
+            transition: 'background .12s ease'
           }}
         >
           <span

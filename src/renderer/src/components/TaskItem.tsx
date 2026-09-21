@@ -1,4 +1,4 @@
-﻿import { useState } from 'react'
+import { useState } from 'react'
 import type { TaskWithStatus, Status } from '../../../shared/types'
 import { StatusPicker } from './StatusChip'
 import { formatRelative, hexToRgba, nextStatus } from '../utils'
@@ -20,20 +20,44 @@ export function TaskItem({ task, statuses, selected, onSelect, onSetStatus }: Pr
   const color = current.color
   const isClosed = current.is_closed === 1
 
+  // 选中态的主高亮色（与各主题的琥珀一致；硬编码 hex 因 hexToRgba 不解析 var()）
+  const ACCENT = '#E8A857'
+
   return (
     <div
       onClick={onSelect}
+      onMouseEnter={(e) => {
+        if (selected) return
+        const el = e.currentTarget as HTMLElement
+        el.style.background = 'linear-gradient(180deg, rgba(255,255,255,0.055) 0%, rgba(255,255,255,0.025) 100%)'
+        el.style.borderColor = 'var(--line-2)'
+      }}
+      onMouseLeave={(e) => {
+        if (selected) return
+        const el = e.currentTarget as HTMLElement
+        el.style.background = 'linear-gradient(180deg, rgba(255,255,255,0.028) 0%, rgba(255,255,255,0.012) 100%)'
+        el.style.borderColor = 'var(--line)'
+      }}
       className="rise"
       style={{
         position: 'relative',
-        padding: '14px 16px 14px 22px',
+        // picker 打开时抬高整张卡片的层叠级别，
+        // 否则后续卡片会按 DOM 顺序盖住下拉层（导致看不见 / 点不到）
+        zIndex: pickerOpen ? 1000 : 'auto',
+        padding: '14px 16px 14px 24px',
         background: selected
-          ? 'linear-gradient(180deg, rgba(255,255,255,0.045) 0%, rgba(255,255,255,0.02) 100%)'
-          : 'transparent',
+          ? `linear-gradient(180deg, ${hexToRgba(ACCENT, 0.18)} 0%, ${hexToRgba(ACCENT, 0.08)} 100%)`
+          : 'linear-gradient(180deg, rgba(255,255,255,0.028) 0%, rgba(255,255,255,0.012) 100%)',
         borderRadius: 12,
         cursor: 'pointer',
-        border: selected ? '1px solid var(--line-2)' : '1px solid transparent',
-        transition: 'background .15s, border-color .15s',
+        border: selected
+          ? `1px solid ${hexToRgba(ACCENT, 0.65)}`
+          : '1px solid var(--line)',
+        boxShadow: selected
+          ? `0 0 0 3px ${hexToRgba(ACCENT, 0.10)}, 0 8px 22px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.05)`
+          : '0 1px 0 rgba(255,255,255,0.02) inset, 0 2px 8px rgba(0,0,0,0.18)',
+        transition: 'background .15s, border-color .15s, box-shadow .2s, transform .15s',
+        transform: selected ? 'translateX(2px)' : 'none',
         opacity: isClosed ? 0.62 : 1
       }}
     >
@@ -41,12 +65,14 @@ export function TaskItem({ task, statuses, selected, onSelect, onSetStatus }: Pr
         style={{
           position: 'absolute',
           left: 0,
-          top: 12,
-          bottom: 12,
-          width: 3,
+          top: 10,
+          bottom: 10,
+          width: selected ? 4 : 3,
           borderRadius: 4,
           background: color,
-          boxShadow: selected ? `0 0 12px ${hexToRgba(color, 0.6)}` : 'none'
+          boxShadow: selected
+            ? `0 0 14px ${hexToRgba(color, 0.85)}, 0 0 4px ${hexToRgba(ACCENT, 0.6)}`
+            : `0 0 8px ${hexToRgba(color, 0.35)}`
         }}
       />
 

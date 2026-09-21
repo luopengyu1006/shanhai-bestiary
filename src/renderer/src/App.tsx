@@ -75,7 +75,8 @@ export function App() {
             borderRight: '1px solid var(--line)',
             padding: '20px 18px',
             overflow: 'auto',
-            background: 'rgba(255,255,255,0.012)'
+            background: 'rgba(255,255,255,0.012)',
+            isolation: 'isolate'
           }}
         >
           <NewTaskInput />
